@@ -45,7 +45,7 @@ import java.util.LinkedHashSet;
         }
 
         FileManager fileManager = new FileManager(filename);
-        LinkedHashSet<Route> routes = fileManager.readCollection();
+        LinkedHashSet<Route> routes = fileManager.loadCollection();
         logger.info("Collection established - CommandExecutor.establishCollection()");
         return routes;
     }

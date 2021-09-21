@@ -47,23 +47,7 @@ public class CollectionManager implements Serializable {
     /**
      * Читает коллекцию из файла
      */
-    public LinkedHashSet<Route> loadCollection(String fileName) {
-        FileManager fileManager = new FileManager(fileName);
-        LinkedHashSet<Route> routeCollection = fileManager.readCollection();
-        ArrayList<Integer> listId = new ArrayList<>();
-        boolean notUnique = false;
-        for (Route route : routeCollection) {
-            for (Integer id : listId) {
-                if (route.getId().equals(id)) {
-                    route.setId(newId(routeCollection));
-                    notUnique = true;
-                }
-            }
-            listId.add(route.getId());
-        }
-        if (notUnique) System.out.println("id были не уникальны. Но не волнуйтесь, мы все исправили:)");
-        return routeCollection;
-    }
+
 
 
     /**

@@ -3,6 +3,7 @@ package utilities;
 import general.Route;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
 
 /**
@@ -49,8 +50,22 @@ public class FileManager {
 
             }
         }
-        return new LinkedHashSet<Route>();
+        return new LinkedHashSet<>();
 
+    }
+
+    public LinkedHashSet<Route> loadCollection() {
+        LinkedHashSet<Route> routeCollection = readCollection();
+        ArrayList<Integer> listId = new ArrayList<>();
+        for (Route route : routeCollection) {
+            for (Integer id : listId) {
+                if (route.getId().equals(id)) {
+                    route.setId(newId(routeCollection));
+                }
+            }
+            listId.add(route.getId());
+        }
+        return routeCollection;
     }
 
     /**
@@ -83,6 +98,12 @@ public class FileManager {
         }
 
 
+    }
+    private Integer newId(LinkedHashSet<Route> routeCollection) {
+        return (routeCollection.size() == 0) ? 1 : routeCollection.stream()
+                .mapToInt(Route::getId)
+                .max()
+                .getAsInt() + 1;
     }
 
 }
