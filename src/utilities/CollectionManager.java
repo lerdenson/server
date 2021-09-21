@@ -6,7 +6,6 @@ import general.Route;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.stream.Collectors;
@@ -43,10 +42,6 @@ public class CollectionManager implements Serializable {
         FileManager fileManager = new FileManager(fileName);
         fileManager.writeCollection(routeCollection);
     }
-
-    /**
-     * Читает коллекцию из файла
-     */
 
 
 
